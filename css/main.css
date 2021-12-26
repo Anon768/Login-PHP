@@ -24,6 +24,7 @@ body{
 
 #title_form{
     font-family: var(--font);
+    color: #222;
 }
 
 input:not([type="submit"]){
@@ -38,7 +39,7 @@ input:not([type="submit"]){
     margin-bottom: 10px;
 }
 
-input:not([type="submit"]):placeholder{
+input:not([type="submit"])::placeholder{
     font-family: var(--font);
 }
 
