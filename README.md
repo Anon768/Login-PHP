@@ -2,6 +2,8 @@
 
 This project is a simple login and registration in PHP OOP with a simple person air.
 
+![presentation_image](login.png)
+
 ## Technologies used
 
 - `PHP`
