@@ -2,10 +2,15 @@
 
 include_once('config/conf.php');
 
+$error_password = false;
+$error_username = false;
+$error_login = false;
+
 if(isset($_POST['sign_submit']))
 {
     if($_SERVER['REQUEST_METHOD'] === 'POST')
     {
+
         $username = $connect->real_escape_string($_POST['username']);
         $password = $connect->real_escape_string($_POST['password']); // strtolower()
 
@@ -13,6 +18,8 @@ if(isset($_POST['sign_submit']))
 
         if($st = $connect->query($sql_select))
         {
+            $error;
+
             if($st->num_rows === 1)
             {
                 $row = $st->fetch_array(MYSQLI_ASSOC);
@@ -26,15 +33,15 @@ if(isset($_POST['sign_submit']))
                     header("location: home.php?username=$username");
                 }else
                 {
-                    echo '<script>alert("the password is wrong")</script>';
+                    $error_password = true;
                 }
             }else{
-                echo '<script>alert("there are no users with this username")</script>';
+                $error_username = true;
             }
         }
         else
         {
-            echo '<script>alert("error with login")</script>';
+            $error_login = true;
         }
     }
 }
@@ -55,6 +62,33 @@ $connect->close();
     
 <div class="box_form">
     <h1 id="title_form">Sign</h1>
+
+    <?php
+    if($error_password === true)
+    {
+        echo '
+            <div class="alert">
+                <span>The password is wrong</span>
+            </div>
+        ';
+    }
+    if($error_username === true)
+    {
+        echo '
+            <div class="alert">
+                <span>There are no users with this username</span>
+            </div>
+        ';
+    }
+    if($error_login === true)
+    {
+        echo '
+            <div class="alert">
+                <span>Error with login</span>
+            </div>
+        ';
+    }
+    ?>
 
     <!--Form-->
     <form method="POST">
