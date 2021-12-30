@@ -38,7 +38,7 @@ function error_fun()
 {
     echo '
         <div class="alert">
-            <span>passwords do not match</span>
+            <span>Passwords do not match</span>
         </div>
     ';
 }
