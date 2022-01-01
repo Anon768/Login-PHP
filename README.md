@@ -25,4 +25,4 @@ To use the project is really very simple. You will need to register an account, 
 
 ## LICENSE
 
-LICENSE: [GNU General Public License v3](LICENSE).
+This program is distributed under the license [GNU General Public License v3](LICENSE), please read the license for information on program distribution and availability.
